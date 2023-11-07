@@ -1,0 +1,43 @@
+<div class="wraper">
+  <h2 class="title">Wprowadź nazwe ucznia</h2>
+  <form [formGroup]="userData" class="form" (ngSubmit)="onSubmit()">
+    <mat-form-field appearance="outline">
+      <mat-label for="name">Imię ucznia</mat-label>
+      <input
+        type="text"
+        name="name"
+        #nameRef
+        matNativeControl
+        formControlName="name"
+      />
+      <!-- <ng-component *ngIf="userData.get('name')?.errors ? showErrors() : null"
+        >blad</ng-component
+      > -->
+    </mat-form-field>
+    <p *ngIf="userData.get('name')">
+      {{ showErrors() }}
+    </p>
+
+    <mat-form-field appearance="outline">
+      <mat-label for="last_name"
+        >Nazwisko ucznia do zapisania na zajecia</mat-label
+      >
+      <input
+        type="text"
+        name="last_name"
+        #last_nameRef
+        matNativeControl
+        formControlName="last_Name"
+      />
+    </mat-form-field>
+
+    <button
+      mat-raised-button
+      color="primary"
+      (click)="onAddStudent(nameRef, last_nameRef)"
+    >
+      Zapisz ucznia
+    </button>
+    <button mat-raised-button color="warn" type="submit">Wyślij</button>
+  </form>
+</div>
